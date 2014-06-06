@@ -10,7 +10,7 @@ class Contact
     @notes = notes
 	end
 
-	def to_sym
-		"#{id}: #{@first_name} #{last_name} - #{email} - #{notes}"
-	end
+	def to_s
+		"#{first_name} #{last_name}, Email: #{email}, Notes: #{notes}"
+	end 
 end

@@ -27,7 +27,7 @@ class CRM
  	  puts "[delete] Delete a contact"
   	puts "[display all] Display all the contacts"
   	puts "[display] Display a particular contact"
- 	  puts "[display attribute] Display an attribute"
+ 	  puts "[display attribute] Display contacts by a particular attribute"
   	puts "[exit] Exit"
   	puts "Please type what option you want"
   end
@@ -95,15 +95,30 @@ class CRM
 	 end 
 
 	 def delete_contact
+	 	 puts "Please choose the contact ID of the contact you want to delete"
+	 	 contact = gets.chomp.to_i
+	 	 @rolodex.delete_contact(contact)
+	 	 puts "Contact #{contact} deleted"
+	 	 main_menu
 	 end
 
 	 def display_all_contacts
+	 	 @rolodex.display_all
+	 	 main_menu
 	 end
 
 	 def display_particular_contact
+	 	puts "Please choose the contact ID of the contact you want to display"
+	 	contact = gets.chomp.to_i
+	 	@rolodex.display_particular_contact(contact)
+	 	main_menu
 	 end
 
 	 def display_info_by_attribute
+	 	puts "Please choose what attribute you want to see - [First Name, Last Name, Email, Notes]"
+	 	attribute = gets.chomp.to_s
+	 	@rolodex.display_info_by_attribute(attribute)
+	 	main_menu
 	 end 
 
 
