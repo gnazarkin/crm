@@ -20,7 +20,8 @@ class CRM
 	end
 
 	def print_main_menu
-
+		puts "--------------------------------------------"
+		puts "Main Menu".rjust(20)
 		puts "[add] Add a new contact"
  	  puts "[modify] Modify an existing contact"
  	  puts "[delete] Delete a contact"
