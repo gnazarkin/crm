@@ -1,20 +1,20 @@
-require_relative 'contact'
-require_relative 'crm'
-
 class Rolodex
-	attr_accessor :contact_array, :contact_id 
+	attr_accessor :contact_array, :contact_id, :name
 	@contact_id=1
 
-	def initialize
+	def initialize(name)
+		@name = name
 		@contact_array = []
 	end
 
+	def find(contact)
+		contact = contact - 1
+		return contact_array[contact]
+	end 
 
 
 	def add_contact(contact)	
 		@contact_array << contact
-		# contact.id = @contact_id
-		# @contact_id = @contact_id + 1
 	end
 
 	def modify_contact()
@@ -32,6 +32,7 @@ class Rolodex
 		contact = gets.chomp
 		puts "#{@contact_array[contact]}"
 	end 
+
 
 	def display_info_by_attribute
 	end 

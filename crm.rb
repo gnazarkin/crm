@@ -6,7 +6,7 @@ class CRM
 
 	def initialize(name, rolodex)
 		@name = name
-		@rolodex = Rolodex.new
+		@rolodex = Rolodex.new("rolodex")
 	end
 
 	def main_menu
@@ -20,6 +20,7 @@ class CRM
 	end
 
 	def print_main_menu
+
 		puts "[add] Add a new contact"
  	  puts "[modify] Modify an existing contact"
  	  puts "[delete] Delete a contact"
@@ -63,7 +64,6 @@ class CRM
 	def modify_contact
 		puts "Please choose the contact ID of the contact you want to modify"
 		contact = gets.chomp.to_i
-		contact = contact - 1
 		puts "Please type what attribute you want to modify - [First Name, Last Name, Email, Notes]"
 		attribute = gets.chomp.to_s
 		puts "Are you sure you want to change the #{attribute.downcase} [yes, no]"
@@ -73,18 +73,19 @@ class CRM
 			puts "What do you want to change it to?"
 			change = gets.chomp.to_s
 
-			case change
-				when "First Name" then @rolodex.contact_array[contact].first_name = change
-			  when "Last Name" then  @rolodex.contact_array[contact].last_name = change
-			  when "Email" then @rolodex.contact_array[contact].email = change
-				when "Notes" then @rolodex.contact_array[contact].notes = change
+			case attribute
+				when "First Name" then @rolodex.find(contact).first_name = change
+			  when "Last Name" then  @rolodex.find(contact).last_name = change
+			  when "Email" then @rolodex.find(contact).email = change
+				when "Notes" then @rolodex.find(contact).notes = change
 			end 
 
-			puts "Your updated contact is 
-			\nFirst Name: #{rolodex.contact_array[contact].first_name} 
-			\nLast Name: #{@rolodex.contact_array[contact].last_name} 
-			\nEmail: #{@rolodex.contact_array[contact].email} 
-			\nNotes:#{@rolodex.contact_array[contact].notes}
+			puts "
+			Your updated contact is 
+			\nFirst Name: #{@rolodex.find(contact).first_name} 
+			\nLast Name: #{@rolodex.find(contact).last_name} 
+			\nEmail: #{@rolodex.find(contact).email} 
+			\nNotes:#{@rolodex.find(contact).notes}
 			"
 	 	else 
 	 		main_menu
@@ -106,7 +107,6 @@ class CRM
 
 
 end 
-
 
 
 puts "Please input the CRM name"
