@@ -1,3 +1,6 @@
+require_relative 'contact'
+require_relative 'rolodex'
+
 class CRM
 	attr_accessor :name, :rolodex
 
@@ -104,63 +107,7 @@ class CRM
 
 end 
 
-class Contact
-	attr_accessor :id, :first_name, :last_name, :email, :notes
 
-	def initialize(first_name, last_name, email, notes)
-		@id = id
-		@first_name = first_name
-    @last_name = last_name
-    @email = email
-    @notes = notes
-	end
-
-	def to_sym
-		"#{id}: #{@first_name} #{last_name} - #{email} - #{notes}"
-	end
-end
-
-class Rolodex
-	attr_accessor :contact_array, :contact_id 
-	@contact_id=1
-
-	def initialize
-		@contact_array = []
-	end
-
-
-
-	def add_contact(contact)	
-		@contact_array << contact
-		# contact.id = @contact_id
-		# @contact_id = @contact_id + 1
-	end
-
-	def modify_contact()
-	end
-
-	def display_all_contacts
-		@contact_array.each do |contact|
-			puts contact
-		end 
-		@crm_name.main_menu
-	end 
-
-	def display_particular_contact
-		puts "Please choose the ID of the contact you want to print"
-		contact = gets.chomp
-		puts "#{@contact_array[contact]}"
-	end 
-
-	def display_info_by_attribute
-	end 
-
-	def delete_contact
-	end
-
-	def to_s
-	end
-end 
 
 puts "Please input the CRM name"
 crm_name = gets.chomp
